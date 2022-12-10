@@ -16,6 +16,8 @@ public class BusDemo {
             b.displayBusInfo();
         }
 
+        ArrayList<Booking> bookings=new ArrayList<Booking>();
+
         int userOpt=1;
         Scanner key=new Scanner(System.in);
         while(userOpt==1) {
@@ -23,7 +25,15 @@ public class BusDemo {
             userOpt=key.nextInt();
 
             if(userOpt==1){
-                System.out.println("Booking....");
+                Booking booking=new Booking();
+                if(booking.isAvailable(bookings,buses))
+                {
+                    bookings.add(booking);
+                    System.out.println("Your booking is confirmed");
+                }
+                else{
+                    System.out.println("Sorry.Bus is full.Try another bus or date.");
+                }
             }
         }
     }
